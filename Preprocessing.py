@@ -18,4 +18,3 @@ for i in year:
         for k in numf:
             dF = pd.read_csv('C:/Users/Choti/Documents/270702/Term Project/Data/Bangkok_'+j+'_'+i+'_'+k+'.csv')
             df = df.append(dF)
-            
