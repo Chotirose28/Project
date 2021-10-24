@@ -1,0 +1,28 @@
+Feature in each file
+Year = year of the collected data
+Month = month of the collected data
+Day = date of the collected data
+UTC Hour = time of the collected data in hour (at local time - Bangkok)
+temp = temperature (celcius)
+dwpt = dew point temperature (the temperature to which the air would have to cool (at constant pressure and constant water vapor content) in order to reach saturation.) - celcius
+rhum = relative humudity (%)
+prcp = precipitation level (mm)
+wspd = wind speed (km/h)
+pres = air pressure (hPa)
+PM2.5 = PM2.5 concentration (µg/m3)
+
+Name of each file
+BK = Bangkok
+CM = Chiang Mai
+CR = Chiang Rai
+NS = Nakhon Sawan
+CB = Chon Buri
+RY = Rayong
+RB = Ratchaburi
+KB = Kanchanaburi
+KK = Khon Kaen
+UR = Ubon Ratchathani
+NT = Nakhon Si Thammarat 
+PK = Phuket
+
+Note: if the file end with _Ndt, it means no date/time included
