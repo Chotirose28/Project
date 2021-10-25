@@ -1,0 +1,74 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+cm2 = pd.read_csv("CM.csv")
+
+cm_m2 = cm2.groupby(['Year','Month'])[['temp','dwpt','rhum','prcp','wspd','pres','PM2.5']].mean()
+cm_19 = cm_m2.filter(like = '2019', axis=0)
+cm_20 = cm_m2.filter(like = '2020', axis=0)
+cm_20 = cm_20.reset_index(level=['Year'])
+cm_19 = cm_19.reset_index(level=['Year'])
+
+#Temp (celcius)
+cm_19.loc[:,'temp'].plot(kind='line',label='2019', title='Level of temperature per month in Chiang Mai 2019', figsize=(10,5))
+cm_20.loc[:,'temp'].plot(kind='line',label='2020', title='Level of temperature per month in Chiang Mai 2019-2020', figsize=(10,5))
+plt.xlabel("Month")
+plt.ylabel("Temperature (celcius)")
+plt.legend()
+plt.show()
+
+#Dew point (celcius)
+cm_19.loc[:,'dwpt'].plot(kind='line',label='2019', title='Level of temperature per month in Chiang Mai 2019', figsize=(10,5))
+cm_20.loc[:,'dwpt'].plot(kind='line',label='2020', title='Level of dew point per month in Chiang Mai 2019-2020', figsize=(10,5))
+plt.xlabel("Month")
+plt.ylabel("Dew point (celcius)")
+plt.legend()
+plt.show()
+
+#relative humudity (%)
+cm_19.loc[:,'rhum'].plot(kind='line',label='2019', title='Level of temperature per month in Chiang Mai 2019', figsize=(10,5))
+cm_20.loc[:,'rhum'].plot(kind='line',label='2020', title='Level of relative humudity per month in Chiang Mai 2019-2020', figsize=(10,5))
+plt.xlabel("Month")
+plt.ylabel("Relative humudity (%)")
+plt.legend()
+plt.show()
+
+#precipitation level (mm)
+cm_19.loc[:,'prcp'].plot(kind='line',label='2019', title='Level of temperature per month in Chiang Mai 2019', figsize=(10,5))
+cm_20.loc[:,'prcp'].plot(kind='line',label='2020', title='Level of precipitation per month in Chiang Mai 2019-2020', figsize=(10,5))
+plt.xlabel("Month")
+plt.ylabel("Precipitation level (mm)")
+plt.legend()
+plt.show()
+
+#wind speed (km/h)
+cm_19.loc[:,'wspd'].plot(kind='line',label='2019', title='Level of temperature per month in Chiang Mai 2019', figsize=(10,5))
+cm_20.loc[:,'wspd'].plot(kind='line',label='2020', title='Level of wind speed per month in Chiang Mai 2019-2020', figsize=(10,5))
+plt.xlabel("Month")
+plt.ylabel("Wind speed (km/h)")
+plt.legend()
+plt.show()
+
+#air pressure (hPa)
+cm_19.loc[:,'pres'].plot(kind='line',label='2019', title='Level of temperature per month in Chiang Mai 2019', figsize=(10,5))
+cm_20.loc[:,'pres'].plot(kind='line',label='2020', title='Level of air pressure per month in Chiang Mai 2019-2020', figsize=(10,5))
+plt.xlabel("Month")
+plt.ylabel("Air pressure (hPa)")
+plt.legend()
+plt.show()
+
+#PM2.5 ((µg/m3))
+cm_19.loc[:,'PM2.5'].plot(kind='line',label='2019', title='Level of temperature per month in Chiang Mai 2019', figsize=(10,5))
+cm_20.loc[:,'PM2.5'].plot(kind='line',label='2020', title='Level of PM2.5 per month in Chiang Mai 2019-2020', figsize=(10,5))
+plt.xlabel("Month")
+plt.ylabel("PM2.5")
+plt.legend()
+plt.show()
+
+#Correlation plot
+fig = plt.figure(figsize=(10,5))
+ax = fig.add_subplot()
+ax.set_title('Correlation Plot in Chiang Mai', fontsize=20)
+sns.heatmap(cm_m2[['temp', 'dwpt', 'rhum', 'prcp', 
+                 'wspd','pres', 'PM2.5']].corr(), ax=ax)
